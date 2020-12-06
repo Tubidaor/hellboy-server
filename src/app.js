@@ -7,6 +7,7 @@ const { NODE_ENV } = require('./config')
 const app = express()
 const usersRouter = require('./users/users-router')
 const authRouter = require('./auth/auth-router')
+const addressRouter = require('./addresses/address-router')
 
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 
 app.use('/api', usersRouter)
 app.use('/api', authRouter)
+app.use('/api', addressRouter)
 
 app.use(function errorHandler(error, req, res, next) {
   let response
